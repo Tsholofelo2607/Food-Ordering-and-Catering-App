@@ -1,0 +1,35 @@
+<!-- order_item_view.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/orderIdTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order ID: 12345"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/orderDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: 2024-10-08"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/orderTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: R50.00"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/viewDetailsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Details"/>
+</LinearLayout>

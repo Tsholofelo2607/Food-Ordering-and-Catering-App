@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "249720880975",
+    "firebase_url": "https://catering-webapp-default-rtdb.firebaseio.com",
+    "project_id": "catering-webapp",
+    "storage_bucket": "catering-webapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249720880975:android:e55fb46f8cc5391cfc8f3a",
+        "android_client_info": {
+          "package_name": "com.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxuug6zbrbAs11guroHJDF2GRfmtX59z4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
