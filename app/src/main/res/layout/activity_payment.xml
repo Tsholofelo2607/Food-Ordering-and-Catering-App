@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/name"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,51 +9,51 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Payment Information"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Name"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="16dp" />
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_marginBottom="16dp" />
+        android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Phone Number"
-        android:inputType="phone"
-        android:layout_marginBottom="16dp" />
+        android:inputType="phone" />
 
     <EditText
-        android:id="@+id/editTextCardNumber"
+        android:id="@+id/cardnum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Card Number"
-        android:inputType="number"
-        android:layout_marginBottom="16dp" />
+        android:inputType="number" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextExpiryDate"
+            android:id="@+id/expirydate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -60,7 +61,7 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/editTextCVV"
+            android:id="@+id/cvv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -73,8 +74,8 @@
         android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:layout_gravity="center"
         android:backgroundTint="#F45A29"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center" />
+        android:text="Submit"
+        android:textColor="@android:color/white" />
 </LinearLayout>
