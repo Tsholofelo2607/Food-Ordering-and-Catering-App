@@ -2,7 +2,9 @@ package com.example
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Calendar
@@ -14,6 +16,13 @@ class Bookings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bookings)
+
+        val button: View = findViewById(R.id.confirm)
+        button.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+            startActivity(intent)
+        }
+
        timePicker = findViewById(R.id.timePicker)
        datePicker = findViewById(R.id.datePicker)
 
