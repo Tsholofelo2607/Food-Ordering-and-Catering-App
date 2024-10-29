@@ -25,6 +25,11 @@ class Checkout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
+        val checkoutbutton: View = findViewById(R.id.checkout)
+        checkoutbutton.setOnClickListener {
+            val intent = Intent(this, Payment::class.java)
+            startActivity(intent)
+        }
 
             // Retrieve the cart items from the intent
             val cartItems: MutableList<Menu.FoodItem> =
@@ -44,12 +49,12 @@ class Checkout : AppCompatActivity() {
             calculateTotalPrice(cartItems)
 
             // Checkout button
-            findViewById<Button>(R.id.checkoutButton).setOnClickListener {
+            findViewById<Button>(R.id.checkout).setOnClickListener {
                 checkout() // Handle checkout logic
             }
 
             // Back to Menu button
-            findViewById<Button>(R.id.checkoutButton).setOnClickListener {
+            findViewById<Button>(R.id.checkout).setOnClickListener {
                 val intent = Intent(this, Menu::class.java)
                 startActivity(intent)
                 finish() // Optional: Close the Checkout activity

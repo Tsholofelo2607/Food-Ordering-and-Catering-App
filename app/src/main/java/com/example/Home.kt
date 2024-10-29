@@ -12,6 +12,12 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val skipbutton: View=findViewById(R.id.skip)
+        skipbutton.setOnClickListener{
+            val intent= Intent(this, Menu::class.java)
+            startActivity(intent)
+        }
+
         val registerbutton: View=findViewById(R.id.Register)
         registerbutton.setOnClickListener{
             val intent= Intent(this, Register::class.java)

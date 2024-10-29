@@ -47,6 +47,9 @@ private lateinit var editTextName: EditText
 
             // Here you would handle the collected data (e.g., save to a database, send to a server)
             Toast.makeText(this, "Data Collected:\nName: $name\nEmail: $email\nPhone: $phone\nCard Number: $cardNumber\nExpiry Date: $expiryDate\nCVV: $cvv", Toast.LENGTH_LONG).show()
+
+            // Confirmation message
+            Toast.makeText(this, "Your payment has been successfully received.", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         }

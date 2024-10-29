@@ -160,15 +160,15 @@ class Menu : AppCompatActivity() {
             val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
             // Add items to the BottomNavigationView programmatically
-            bottomNavigationView.menu.add(0, R.id.nav_home, 0, "Menu").setIcon(R.drawable.home)
+            bottomNavigationView.menu.add(0, R.id.nav_menu, 0, "Menu").setIcon(R.drawable.menuicon)
             bottomNavigationView.menu.add(0, R.id.nav_cart, 1, "Cart").setIcon(R.drawable.shopping)
-            bottomNavigationView.menu.add(0, R.id.nav_bookings, 2, "Bookings").setIcon(R.drawable.booking)
+            bottomNavigationView.menu.add(0, R.id.nav_bookings, 2, "Bookings").setIcon(R.drawable.book)
             bottomNavigationView.menu.add(0, R.id.nav_settings, 3, "Settings").setIcon(R.drawable.settings)
 
             // Set up the item selection listener
             bottomNavigationView.setOnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.nav_home -> {
+                    R.id.nav_menu -> {
                         // Redirect to the Home Activity
                         startActivity(Intent(this, Home::class.java))
                         true
@@ -193,9 +193,6 @@ class Menu : AppCompatActivity() {
             }
 
     }
-
-
-
 
 
     private fun showCartItems(cartItems: List<FoodItem>) {
