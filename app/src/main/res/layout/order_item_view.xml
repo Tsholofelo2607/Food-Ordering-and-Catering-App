@@ -27,9 +27,5 @@
         android:text="Total: R50.00"
         android:textSize="16sp"/>
 
-    <Button
-        android:id="@+id/viewDetailsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Details"/>
+
 </LinearLayout>

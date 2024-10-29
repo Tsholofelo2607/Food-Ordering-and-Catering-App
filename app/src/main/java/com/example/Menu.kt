@@ -19,8 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Menu.FoodItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.paypal.android.sdk.payments.PayPalConfiguration
-import com.paypal.android.sdk.payments.PayPalService
 
 
 class Menu : AppCompatActivity() {
@@ -162,47 +160,41 @@ class Menu : AppCompatActivity() {
             val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
             // Add items to the BottomNavigationView programmatically
-            bottomNavigationView.menu.add(0, R.id.nav_menu, 0, "Menu").setIcon(R.drawable.home)
+            bottomNavigationView.menu.add(0, R.id.nav_home, 0, "Menu").setIcon(R.drawable.home)
             bottomNavigationView.menu.add(0, R.id.nav_cart, 1, "Cart").setIcon(R.drawable.shopping)
-            bottomNavigationView.menu.add(0, R.id.nav_order_history, 2, "Order History").setIcon(R.drawable.orderhis)
+            bottomNavigationView.menu.add(0, R.id.nav_bookings, 2, "Bookings").setIcon(R.drawable.booking)
             bottomNavigationView.menu.add(0, R.id.nav_settings, 3, "Settings").setIcon(R.drawable.settings)
 
             // Set up the item selection listener
             bottomNavigationView.setOnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.nav_menu -> {
-                        // Handle the menu action
+                    R.id.nav_home -> {
+                        // Redirect to the Home Activity
+                        startActivity(Intent(this, Home::class.java))
                         true
                     }
                     R.id.nav_cart -> {
-                        // Handle the cart action
+                            // Redirect to the Cart Activity
+                        startActivity(Intent(this, Cart::class.java))
                         true
                     }
-                    R.id.nav_order_history -> {
-                        // Handle the order history action
+                    R.id.nav_bookings -> {
+                        // Redirect to the Order History Activity
+                        startActivity(Intent(this, Bookings::class.java))
                         true
                     }
                     R.id.nav_settings -> {
-                        // Handle the settings action
+                        // Redirect to the Order History Activity
+                        startActivity(Intent(this, Settings::class.java))
                         true
                     }
                     else -> false
                 }
             }
-        val paypalConfig = PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX) // Change to ENVIRONMENT_PRODUCTION for live payments
-            .clientId("AUiZY1CZ48JnNfECt10kVmQTu1fjypuls1Y7HcEYpxbusOD4TTbPvDuCfG23bFzAnI7-M_RzxNlx6l-8") // Replace with your client ID
 
-        // Start PayPal service
-        val intent = Intent(this, PayPalService::class.java)
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalConfig)
-        startService(intent)
     }
 
-    override fun onDestroy() {
-        stopService(Intent(this, PayPalService::class.java))
-        super.onDestroy()
-    }
+
 
 
 

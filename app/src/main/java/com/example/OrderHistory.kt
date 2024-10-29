@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -63,7 +62,7 @@ class OrderHistory : AppCompatActivity() {
             val orderIdTextView: TextView = itemView.findViewById(R.id.orderIdTextView)
             val orderDateTextView: TextView = itemView.findViewById(R.id.orderDateTextView)
             val orderTotalTextView: TextView = itemView.findViewById(R.id.orderTotalTextView)
-            val viewDetailsButton: Button = itemView.findViewById(R.id.viewDetailsButton)
+
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
@@ -74,9 +73,9 @@ class OrderHistory : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
             val order = orderList[position]
-            holder.orderIdTextView.text = "Order ID: ${order.orderId}"
-            holder.orderDateTextView.text = "Date: ${order.orderDate}"
-            holder.orderTotalTextView.text = "Total: $${String.format("%.2f", order.totalAmount)}"
+            holder.orderIdTextView.text = "Order ID: R{order.orderId}"
+            holder.orderDateTextView.text = "Date: R{order.orderDate}"
+            holder.orderTotalTextView.text = "Total: R${String.format("%.2f", order.totalAmount)}"
 
 
         }
