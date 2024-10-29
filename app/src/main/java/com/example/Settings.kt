@@ -30,5 +30,18 @@ class Settings : AppCompatActivity() {
             val intent = Intent(this, OrderHistory::class.java)
             startActivity(intent)
         }
+        // Find the logout button
+        val logoutButton: Button = findViewById(R.id.logout)
+
+        // Set an OnClickListener for the logout button
+        logoutButton.setOnClickListener {
+            // Handle logout logic here
+            // For example, clear user session data or shared preferences
+            // Then redirect to the login activity or main activity
+            val intent = Intent(this, Login::class.java) // Replace with your actual login activity
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish() // Finish the current activity if you want to remove it from the back stack
+        }
     }
 }
