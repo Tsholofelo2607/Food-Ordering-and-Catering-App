@@ -210,36 +210,34 @@ class Menu : AppCompatActivity() {
         val name: String,
         val price: Double,
         val category: String,
-        var isInCart: Boolean = false
+        var isInCart: Boolean = false,
+        val imageResId: Int? = null // Optional image ID for cart items
     ) : Parcelable {
         constructor(parcel: Parcel) : this(
             parcel.readString() ?: "",
             parcel.readDouble(),
-            parcel.readString() ?: "",  // Read the category as a String
-            parcel.readByte() != 0.toByte()  // Read isInCart as a Boolean
+            parcel.readString() ?: "",
+            parcel.readByte() != 0.toByte(),
+            parcel.readInt().takeIf { it != 0 } // 0 if no image ID provided
         )
 
         override fun writeToParcel(parcel: Parcel, flags: Int) {
             parcel.writeString(name)
             parcel.writeDouble(price)
-            parcel.writeString(category)  // Write the category to the Parcel
+            parcel.writeString(category)
             parcel.writeByte(if (isInCart) 1 else 0)
+            parcel.writeInt(imageResId ?: 0)
         }
 
-        override fun describeContents(): Int {
-            return 0
-        }
+        override fun describeContents(): Int = 0
 
         companion object CREATOR : Parcelable.Creator<FoodItem> {
-            override fun createFromParcel(parcel: Parcel): FoodItem {
-                return FoodItem(parcel)
-            }
-
-            override fun newArray(size: Int): Array<FoodItem?> {
-                return arrayOfNulls(size)
-            }
+            override fun createFromParcel(parcel: Parcel): FoodItem = FoodItem(parcel)
+            override fun newArray(size: Int): Array<FoodItem?> = arrayOfNulls(size)
         }
     }
+
+
 
 
     companion object CREATOR : Parcelable.Creator<FoodItem> {
