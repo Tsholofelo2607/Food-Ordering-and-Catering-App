@@ -32,6 +32,13 @@ class Menu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
+        val button: View = findViewById(R.id.login)
+        button.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+            startActivity(intent)
+        }
+
+
         val foodList = listOf(
 
                 // MEALS
@@ -161,7 +168,7 @@ class Menu : AppCompatActivity() {
 
             // Add items to the BottomNavigationView programmatically
             bottomNavigationView.menu.add(0, R.id.nav_menu, 0, "Menu").setIcon(R.drawable.menuicon)
-            bottomNavigationView.menu.add(0, R.id.nav_cart, 1, "Cart").setIcon(R.drawable.shopping)
+            bottomNavigationView.menu.add(0, R.id.nav_cart_item, 1, "Cart").setIcon(R.drawable.shopping)
             bottomNavigationView.menu.add(0, R.id.nav_bookings, 2, "Bookings").setIcon(R.drawable.book)
             bottomNavigationView.menu.add(0, R.id.nav_settings, 3, "Settings").setIcon(R.drawable.settings)
 
@@ -173,7 +180,7 @@ class Menu : AppCompatActivity() {
                         startActivity(Intent(this, Home::class.java))
                         true
                     }
-                    R.id.nav_cart -> {
+                    R.id.nav_cart_item -> {
                             // Redirect to the Cart Activity
                         startActivity(Intent(this, Cart::class.java))
                         true

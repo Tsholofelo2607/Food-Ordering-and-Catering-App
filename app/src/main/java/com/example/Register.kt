@@ -1,21 +1,25 @@
 package com.example
 
-
 import android.os.Bundle
+import android.util.Patterns
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-/*import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase*/
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class Register : AppCompatActivity() {
 
-    /*    private lateinit var auth: FirebaseAuth
-    private lateinit var database: DatabaseReference*/
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        /* auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference
 
         val nameInput = findViewById<EditText>(R.id.editTextText)
@@ -43,11 +47,10 @@ class Register : AppCompatActivity() {
             } else {
                 registerUser(email, password, name, surname)
             }
-        }*/
+        }
     }
-}
 
- /*   private fun registerUser(email: String, password: String, name: String, surname: String) {
+    private fun registerUser(email: String, password: String, name: String, surname: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -73,7 +76,8 @@ class Register : AppCompatActivity() {
                 }
             }
     }
-}*/
+}
 
-//data class User(val name: String, val surname: String, val email: String)
+data class User(val name: String, val surname: String, val email: String)
+
 

@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+
+
 }
 
 android {
@@ -45,6 +47,8 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-auth:23.1.0")
+    implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.firebase:firebase-firestore:25.1.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
@@ -52,15 +56,16 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.viewpager2:viewpager2:1.1.0")
-       /* // Import Firebase BOM
-        implementation ("com.google.firebase:firebase-bom:32.2.0") // Use the latest version
-
-        // Firebase Authentication and Realtime Database dependencies without version numbers
-        implementation ("com.google.firebase:firebase-auth")
-        implementation ("com.google.firebase:firebase-database")*/
-
-        // Other dependencies
+    implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
+    implementation("com.google.firebase:firebase-analytics")
     }
+
+
+
+
+
+
+
 
 
 

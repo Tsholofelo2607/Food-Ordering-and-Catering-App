@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.FirebaseDatabase
+
 import java.util.Calendar
 
 class Bookings : AppCompatActivity() {
@@ -46,6 +48,9 @@ class Bookings : AppCompatActivity() {
                 // Display an error message if any field is empty
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
+                // Save booking details to Firebase
+                saveBookingToFirebase(name, location, email, phoneNumber, message, selectedDate, selectedTime)
+
                 // Show confirmation message
                 Toast.makeText(this, "Your details have been received!", Toast.LENGTH_SHORT).show()
 
@@ -55,13 +60,38 @@ class Bookings : AppCompatActivity() {
             }
         }
 
-
+        // Set up the click listeners correctly
         datePicker.setOnClickListener {
             showDatePickerDialog()
         }
 
         timePicker.setOnClickListener {
             showTimePickerDialog()
+        }
+    }
+
+    private fun saveBookingToFirebase(name: String, location: String, email: String, phoneNumber: String, message: String, selectedDate: String, selectedTime: String) {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("bookings")
+        val bookingId = myRef.push().key // Create a unique ID for the booking
+        val bookingDetails = mapOf(
+            "name" to name,
+            "location" to location,
+            "email" to email,
+            "phoneNumber" to phoneNumber,
+            "message" to message,
+            "date" to selectedDate,
+            "time" to selectedTime
+        )
+
+        if (bookingId != null) {
+            myRef.child(bookingId).setValue(bookingDetails)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Booking saved successfully!", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed to save booking.", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 
@@ -92,3 +122,4 @@ class Bookings : AppCompatActivity() {
         timePickerDialog.show()
     }
 }
+
