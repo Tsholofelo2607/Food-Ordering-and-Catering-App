@@ -1,5 +1,6 @@
 package com.example
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
@@ -18,8 +19,6 @@ class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
-
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference
@@ -41,16 +40,31 @@ class Register : AppCompatActivity() {
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT)
+                    .show()
             } else if (password.length < 6) {
-                Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Password must be at least 6 characters long",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else if (password != confirmPassword) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
             } else {
                 registerUser(email, password, name, surname)
             }
         }
-    }
+        // Get the button by its ID
+        val buttonNavigate = findViewById<Button>(R.id.button5)
+
+        // Set an onClickListener on the button
+        buttonNavigate.setOnClickListener {
+            // Create an intent to navigate to SecondActivity
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)  // Start the second activity
+        }
+
+}
 
     private fun registerUser(email: String, password: String, name: String, surname: String) {
         auth.createUserWithEmailAndPassword(email, password)
