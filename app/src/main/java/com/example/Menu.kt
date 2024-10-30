@@ -32,11 +32,6 @@ class Menu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        val button: View = findViewById(R.id.login)
-        button.setOnClickListener {
-            val intent = Intent(this, Menu::class.java)
-            startActivity(intent)
-        }
 
 
         val foodList = listOf(
@@ -177,12 +172,14 @@ class Menu : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.nav_menu -> {
                         // Redirect to the Home Activity
-                        startActivity(Intent(this, Home::class.java))
+                        startActivity(Intent(this, Menu::class.java))
                         true
                     }
                     R.id.nav_cart_item -> {
-                            // Redirect to the Cart Activity
-                        startActivity(Intent(this, Cart::class.java))
+                        // Redirect to the Cart Activity and pass cart items
+                        val intent = Intent(this, Cart::class.java)
+                        intent.putParcelableArrayListExtra("cartItems", ArrayList(cartItems)) // Pass the cart items
+                        startActivity(intent)
                         true
                     }
                     R.id.nav_bookings -> {
