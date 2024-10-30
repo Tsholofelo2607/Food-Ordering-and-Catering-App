@@ -18,9 +18,7 @@
         <activity
             android:name=".Cart"
             android:exported="false" />
-        <activity
-            android:name=".PersonalDetails"
-            android:exported="false" />
+
         <activity
             android:name=".Payment"
             android:exported="false" />

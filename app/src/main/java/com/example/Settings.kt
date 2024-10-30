@@ -17,12 +17,6 @@ class Settings : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Personal Details button
-        val buttonPersonalDetails: Button = findViewById(R.id.personal)
-        buttonPersonalDetails.setOnClickListener {
-            val intent = Intent(this, PersonalDetails::class.java)
-            startActivity(intent)
-        }
 
         // Order History button
         val buttonOrderHistory: Button = findViewById(R.id.history)
