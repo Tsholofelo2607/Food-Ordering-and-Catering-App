@@ -6,22 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Settings">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="477dp"
-        android:layout_height="757dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/regis" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Copyright"
-        android:textColor="#FFFFFF"
+        android:textColor="#151515"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.182"
@@ -36,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="Logout"
-        android:textColor="#FFFFFF"
+        android:textColor="#131313"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +35,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="157dp"
-        android:layout_height="126dp"
+        android:layout_width="168dp"
+        android:layout_height="151dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
@@ -61,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Sign In/ Register"
-        android:textColor="#FFFFFF"
+        android:textColor="#0E0E0E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="Order History"
-        android:textColor="#FFFFFF"
+        android:textColor="#151515"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
