@@ -10,83 +10,101 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.Menu.FoodItem
 
 class Cart : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var cartAdapter: CartAdapter
-    private var cartItems: MutableList<FoodItem> = mutableListOf()
-    private lateinit var totalPriceTextView: TextView
+    private lateinit var totalAmountTextView: TextView
+    private lateinit var cartAdapter: CartItemAdapter
+    private var cartItems = mutableListOf<FoodItem>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
 
-        recyclerView = findViewById(R.id.recyclerViewCart)
-        totalPriceTextView = findViewById(R.id.totalPrice)
+        totalAmountTextView = findViewById(R.id.totalAmountTextView)
+        recyclerView = findViewById(R.id.cartRecyclerView)
 
-        // Sample data
-        cartItems.add(FoodItem("Meals", 10.99, R.drawable.meals)) // replace with actual image resource
-        cartItems.add(FoodItem("Ribs PLatter", 8.99, R.drawable.ribsplatter)) // replace with actual image resource
+        // Receive cart items from Menu activity
+        cartItems = intent.getParcelableArrayListExtra("cartItems") ?: mutableListOf()
 
-        cartAdapter = CartAdapter(cartItems) { foodItem ->
-            removeItem(foodItem)
+        cartAdapter = CartItemAdapter(cartItems) {
+            updateTotal()
         }
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = cartAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        updateTotalPrice()
+        updateTotal()
     }
 
-    private fun removeItem(foodItem: FoodItem) {
-        cartItems.remove(foodItem)
-        cartAdapter.notifyDataSetChanged()
-        updateTotalPrice()
-    }
-
-    private fun updateTotalPrice() {
+    private fun updateTotal() {
         val total = cartItems.sumOf { it.price }
-        totalPriceTextView.text = "Total: R$total"
+        totalAmountTextView.text = "Total: R$total"
     }
-}
+    class CartItemAdapter(
+        private val cartItems: List<FoodItem>,
+        private val onItemUpdated: () -> Unit
+    ) : RecyclerView.Adapter<CartItemAdapter.CartItemViewHolder>() {
 
-    data class FoodItem(
-        val name: String,
-        val price: Double,
-        val imageResId: Int // Resource ID for the image
-    )
+        inner class CartItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val nameTextView: TextView = view.findViewById(R.id.cartItemName)
+            val priceTextView: TextView = view.findViewById(R.id.cartItemPrice)
+            val removeButton: Button = view.findViewById(R.id.removeButton)
+        }
 
-    class CartAdapter(
-        private val items: MutableList<FoodItem>,
-        private val onRemoveItem: (FoodItem) -> Unit
-    ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.cart_item, parent, false)
+            return CartItemViewHolder(view)
+        }
 
-        inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val imageView: ImageView = itemView.findViewById(R.id.foodImage)
-            val nameTextView: TextView = itemView.findViewById(R.id.foodName)
-            val priceTextView: TextView = itemView.findViewById(R.id.foodPrice)
-            val removeButton: Button = itemView.findViewById(R.id.removeButton)
+        override fun onBindViewHolder(holder: CartItemViewHolder, position: Int) {
+            val item = cartItems[position]
+            holder.nameTextView.text = item.name
+            holder.priceTextView.text = "R${item.price}"
 
-            fun bind(foodItem: FoodItem) {
-                imageView.setImageResource(foodItem.imageResId)
-                nameTextView.text = foodItem.name
-                priceTextView.text = "R${foodItem.price}"
-                removeButton.setOnClickListener {
-                    onRemoveItem(foodItem)
-                }
+            holder.removeButton.setOnClickListener {
+                (cartItems as MutableList).removeAt(position)
+                notifyItemRemoved(position)
+                onItemUpdated()
             }
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.cart_item, parent, false)
-            return CartViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-            holder.bind(items[position])
-        }
-
-        override fun getItemCount(): Int = items.size
+        override fun getItemCount() = cartItems.size
     }
+    class FoodAdapter(
+        private val foodItems: List<FoodItem>,
+        private val onAddToCartClicked: (FoodItem) -> Unit,
+        private val onRemoveFromCartClicked: (FoodItem) -> Unit
+    ) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
+        inner class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val foodImage: ImageView = view.findViewById(R.id.foodImage)
+            val foodName: TextView = view.findViewById(R.id.foodName)
+            val foodPrice: TextView = view.findViewById(R.id.foodPrice)
+            val addButton: Button = view.findViewById(R.id.addButton)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.food_item_view, parent, false)
+            return FoodViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
+            val foodItem = foodItems[position]
+            holder.foodName.text = foodItem.name
+            holder.foodPrice.text = "R${foodItem.price}"
+
+            // Set the food image resource
+            holder.foodImage.setImageResource(R.drawable.meals) // Placeholder or logic for actual image
+
+            holder.addButton.setOnClickListener {
+                onAddToCartClicked(foodItem)
+            }
+        }
+
+        override fun getItemCount() = foodItems.size
+    }
+}
