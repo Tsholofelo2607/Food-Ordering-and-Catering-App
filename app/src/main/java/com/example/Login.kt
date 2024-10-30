@@ -10,13 +10,20 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
-
         // Get the button by its ID
-        val buttonNavigate = findViewById<Button>(R.id.button6)
+        val buttonNavigate = findViewById<Button>(R.id.login)
 
         // Set an onClickListener on the button
         buttonNavigate.setOnClickListener {
+            // Create an intent to navigate to SecondActivity
+            val intent = Intent(this, Menu::class.java)
+            startActivity(intent)  // Start the second activity
+
+        }
+
+        val button= findViewById<Button>(R.id.button6)
+
+        button.setOnClickListener {
             // Create an intent to navigate to SecondActivity
             val intent = Intent(this, Register::class.java)
             startActivity(intent)  // Start the second activity
