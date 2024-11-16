@@ -1,33 +1,86 @@
-<!-- res/layout/cart_item_layout.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp">
+    android:orientation="vertical"
+    android:padding="8dp"
 
-    <TextView
-        android:id="@+id/cartItemName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="16sp" />
+    android:layout_marginBottom="8dp">
 
+    <!-- Food image -->
+    <ImageView
+        android:id="@+id/foodImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="8dp"
+        android:layout_gravity="center"/>
+
+    <!-- Food name -->
     <TextView
-        android:id="@+id/cartItemPrice"
-        android:layout_width="wrap_content"
+        android:id="@+id/foodName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Food Item"
         android:textSize="16sp"
-        android:layout_marginEnd="8dp" />
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
 
+    <!-- Food price -->
+    <TextView
+        android:id="@+id/foodPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R00.00"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Quantity buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <!-- Decrease button -->
+        <Button
+            android:id="@+id/decreaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:backgroundTint="#FF5722"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Quantity text -->
+        <TextView
+            android:id="@+id/foodQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <!-- Increase button -->
+        <Button
+            android:id="@+id/increaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:backgroundTint="#FF5722"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Remove Button -->
     <Button
         android:id="@+id/removeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remove" />
-
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add" />
+        android:text="Remove"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@android:color/holo_red_dark"/>
 </LinearLayout>
+
+
+
+

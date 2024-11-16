@@ -1,27 +1,58 @@
-<!-- res/layout/food_item_layout.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<!-- food_item_view.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/foodImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/meals"
-    android:layout_marginEnd="8dp" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/wors" />
 
-    <TextView
-        android:id="@+id/foodName"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="16sp" />
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/foodPrice"
+        <TextView
+            android:id="@+id/foodName"
+            android:text="Food Name"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/foodPrice"
+            android:text="R50.0"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/addButton"
+            android:text="Add"
+            android:backgroundTint="#FF5722"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/removeButton"
+            android:text="Remove"
+            android:backgroundTint="#FF5722"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </LinearLayout>
+
 </LinearLayout>
+

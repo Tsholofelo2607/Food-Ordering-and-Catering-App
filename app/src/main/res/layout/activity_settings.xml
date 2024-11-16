@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F7F7"
     tools:context=".Settings">
 
 
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="Logout"
-        android:textColor="#131313"
+        android:textColor="#FF5722"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Sign In/ Register"
-        android:textColor="#0E0E0E"
+        android:textColor="#FF5722"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="Order History"
-        android:textColor="#151515"
+        android:textColor="#FF5722"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"

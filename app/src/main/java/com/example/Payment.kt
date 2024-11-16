@@ -1,6 +1,7 @@
 
 package com.example
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -21,13 +22,15 @@ private lateinit var editTextName: EditText
         setContentView(R.layout.activity_payment)
 
 
-        editTextName = findViewById(R.id.name)
+
+
+        editTextName = findViewById(R.id.nameuser)
         editTextEmail = findViewById(R.id.email)
         editTextPhone = findViewById(R.id.number)
         editTextCardNumber = findViewById(R.id.cardnum)
         editTextExpiryDate = findViewById(R.id.expirydate)
         editTextCvv = findViewById(R.id.cvv)
-        buttonSubmit = findViewById(R.id.buttonSubmit)
+        buttonSubmit = findViewById(R.id.payment)
 
         buttonSubmit.setOnClickListener {
             collectData()
@@ -50,6 +53,10 @@ private lateinit var editTextName: EditText
 
             // Confirmation message
             Toast.makeText(this, "Your payment has been successfully received.", Toast.LENGTH_SHORT).show()
+
+            // Navigate to the Menu activity after successful submission
+            val intent = Intent(this, Menu::class.java)  // Specify the target activity
+            startActivity(intent)  // Start the Menu activity
         } else {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         }

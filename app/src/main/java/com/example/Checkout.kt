@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
-import com.example.Menu.FoodItem // Use FoodItem from the Menu package
 
 class Checkout : AppCompatActivity() {
     private lateinit var cartAdapter: CartAdapter
@@ -29,11 +28,16 @@ class Checkout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        val checkoutbutton: View = findViewById(R.id.checkout)
-        checkoutbutton.setOnClickListener {
+        // Get the button by its ID
+        val buttonNavigate = findViewById<Button>(R.id.payment)
+
+        // Set an onClickListener on the button
+        buttonNavigate.setOnClickListener {
+            // Create an intent to navigate to Payment activity
             val intent = Intent(this, Payment::class.java)
-            startActivity(intent)
+            startActivity(intent)  // Start the Payment activity
         }
+
 
         // Retrieve the cart items from the intent
         val cartItems: MutableList<FoodItem> =  // Use FoodItem from com.example.Menu
@@ -63,6 +67,7 @@ class Checkout : AppCompatActivity() {
             startActivity(intent)
             finish() // Optional: Close the Checkout activity
         }
+
     }
 
     private fun calculateTotalPrice(cartItems: List<FoodItem>) {  // Use FoodItem from com.example.Menu
@@ -70,11 +75,13 @@ class Checkout : AppCompatActivity() {
         totalPriceTextView.text = "Total: R${String.format("%.2f", totalPrice)}"
     }
 
+
     private fun removeFromCart(foodItem: FoodItem) {  // Use FoodItem from com.example.Menu
         // Update total price after removal
         totalPrice -= foodItem.price
         totalPriceTextView.text = "Total: R${String.format("%.2f", totalPrice)}"
     }
+
 
     private fun checkout() {
         // Implement your checkout logic here

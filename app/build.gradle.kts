@@ -58,7 +58,9 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-analytics")
-    }
+    implementation ("com.google.code.gson:gson:2.10.1")
+
+}
 
 
 

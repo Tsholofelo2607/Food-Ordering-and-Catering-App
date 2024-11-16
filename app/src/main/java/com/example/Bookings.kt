@@ -22,7 +22,7 @@ class Bookings : AppCompatActivity() {
         setContentView(R.layout.activity_bookings)
 
         // Find all required fields and button
-        val nameField = findViewById<EditText>(R.id.name)
+        val nameField = findViewById<EditText>(R.id.nameuser)
         val locationField = findViewById<EditText>(R.id.editTextLocation)
         val emailField = findViewById<EditText>(R.id.email)
         val phoneNumberField = findViewById<EditText>(R.id.number)
@@ -102,8 +102,16 @@ class Bookings : AppCompatActivity() {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-            val formattedDate = "${selectedDay}/${selectedMonth + 1}/$selectedYear"
-            datePicker.text = formattedDate
+            val selectedDate = Calendar.getInstance()
+            selectedDate.set(selectedYear, selectedMonth, selectedDay)
+
+            // Check if the selected date is in the past
+            if (selectedDate.before(Calendar.getInstance())) {
+                Toast.makeText(this, "Cannot select a past date", Toast.LENGTH_SHORT).show()
+            } else {
+                val formattedDate = "${selectedDay}/${selectedMonth + 1}/$selectedYear"
+                datePicker.text = formattedDate
+            }
         }, year, month, day)
 
         datePickerDialog.show()
@@ -115,8 +123,13 @@ class Bookings : AppCompatActivity() {
         val minute = calendar.get(Calendar.MINUTE)
 
         val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-            val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-            timePicker.text = formattedTime
+            // Check if the selected time is within the allowed range
+            if (selectedHour < 8 || selectedHour > 17) {
+                Toast.makeText(this, "Please select a time between 08:00 and 17:00", Toast.LENGTH_SHORT).show()
+            } else {
+                val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                timePicker.text = formattedTime
+            }
         }, hour, minute, true)
 
         timePickerDialog.show()

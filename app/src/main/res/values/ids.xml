@@ -2,7 +2,7 @@
 <resources>
 
         <item name="nav_menu" type="id" />
-        <item name="nav_cart_item" type="id" />
+    <item name="nav_cart_item" type="id"/>
         <item name="nav_bookings" type="id" />
         <item name="nav_settings" type="id" />
     </resources>
