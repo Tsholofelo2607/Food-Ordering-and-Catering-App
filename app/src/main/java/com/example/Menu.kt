@@ -1,4 +1,3 @@
-
 package com.example
 
 import android.content.Intent
@@ -17,7 +16,7 @@ import android.widget.SearchView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -102,8 +101,7 @@ class Menu : AppCompatActivity() {
 
         val recyclerView: RecyclerView = findViewById(R.id.foodItemsRecyclerView)
 
-        recyclerView.layoutManager = GridLayoutManager(this, 2) // Two columns
-
+        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = foodAdapter
 
         val searchView: SearchView = findViewById(R.id.searchView)

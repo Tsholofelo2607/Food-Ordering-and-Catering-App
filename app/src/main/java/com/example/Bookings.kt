@@ -4,8 +4,10 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,9 +29,17 @@ class Bookings : AppCompatActivity() {
         val emailField = findViewById<EditText>(R.id.email)
         val phoneNumberField = findViewById<EditText>(R.id.number)
         val messageField = findViewById<EditText>(R.id.editTextMessage)
+        val serviceTypeSpinner = findViewById<Spinner>(R.id.serviceTypeSpinner)
+        val guestCountField = findViewById<EditText>(R.id.guestCount)
         timePicker = findViewById(R.id.timePicker)
         datePicker = findViewById(R.id.datePicker)
         val confirmButton: Button = findViewById(R.id.confirm)
+
+        // Populate service type spinner
+        val serviceTypes = arrayOf("Wedding", "Corporate Event", "Birthday Party", "Other")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, serviceTypes)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        serviceTypeSpinner.adapter = adapter
 
         confirmButton.setOnClickListener {
             // Retrieve text from fields
@@ -38,18 +48,20 @@ class Bookings : AppCompatActivity() {
             val email = emailField.text.toString().trim()
             val phoneNumber = phoneNumberField.text.toString().trim()
             val message = messageField.text.toString().trim()
+            val serviceType = serviceTypeSpinner.selectedItem.toString()
+            val guestCount = guestCountField.text.toString().trim()
             val selectedDate = datePicker.text.toString()
             val selectedTime = timePicker.text.toString()
 
             // Check if any field is empty
             if (name.isEmpty() || location.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() ||
-                message.isEmpty() || selectedDate == "Select Date" || selectedTime == "Select Time") {
+                message.isEmpty() || guestCount.isEmpty() || selectedDate == "Select Date" || selectedTime == "Select Time") {
 
                 // Display an error message if any field is empty
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
                 // Save booking details to Firebase
-                saveBookingToFirebase(name, location, email, phoneNumber, message, selectedDate, selectedTime)
+                saveBookingToFirebase(name, location, email, phoneNumber, message, serviceType, guestCount, selectedDate, selectedTime)
 
                 // Show confirmation message
                 Toast.makeText(this, "Your details have been received!", Toast.LENGTH_SHORT).show()
@@ -70,30 +82,48 @@ class Bookings : AppCompatActivity() {
         }
     }
 
-    private fun saveBookingToFirebase(name: String, location: String, email: String, phoneNumber: String, message: String, selectedDate: String, selectedTime: String) {
+    private fun saveBookingToFirebase(
+        name: String,
+        location: String,
+        email: String,
+        phoneNumber: String,
+        message: String,
+        serviceType: String,
+        guestCount: String,
+        selectedDate: String,
+        selectedTime: String
+    ) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("bookings")
-        val bookingId = myRef.push().key // Create a unique ID for the booking
+
+        // Create a unique booking ID
+        val bookingId = myRef.push().key ?: return // If there's no key, do nothing
+
+        // Create a map to hold the booking details
         val bookingDetails = mapOf(
             "name" to name,
             "location" to location,
             "email" to email,
             "phoneNumber" to phoneNumber,
             "message" to message,
+            "serviceType" to serviceType,
+            "guestCount" to guestCount,
             "date" to selectedDate,
             "time" to selectedTime
         )
 
-        if (bookingId != null) {
-            myRef.child(bookingId).setValue(bookingDetails)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Booking saved successfully!", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Failed to save booking.", Toast.LENGTH_SHORT).show()
-                }
-        }
+        // Save the booking details to Firebase under the generated booking ID
+        myRef.child(bookingId).setValue(bookingDetails)
+            .addOnSuccessListener {
+                // Display success message if the booking is saved successfully
+                Toast.makeText(this, "Booking saved successfully!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { exception ->
+                // Display error message if there is an issue saving the booking
+                Toast.makeText(this, "Failed to save booking: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
     }
+
 
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()

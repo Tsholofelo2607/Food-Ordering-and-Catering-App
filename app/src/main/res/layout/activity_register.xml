@@ -28,6 +28,7 @@
         android:text="Create an Account"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/logoImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +48,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#000000"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Surname Field -->
@@ -64,7 +66,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/surnameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#000000"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Email Field -->
@@ -81,7 +84,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#000000"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Password Field -->
@@ -100,7 +104,8 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textColor="#000000"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Confirm Password Field -->
@@ -119,7 +124,8 @@
             android:id="@+id/confirmPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textColor="#000000"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Register Button -->

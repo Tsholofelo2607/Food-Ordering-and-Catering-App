@@ -49,7 +49,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:23.1.0")
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-firestore:25.1.1")
-    testImplementation("junit:junit:4.13.2")
+    testImplementation("junit:junit:4.13.2") //for unit tests
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
@@ -59,6 +59,11 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.code.gson:gson:2.10.1")
+    testImplementation ("org.mockito:mockito-core:4.0.0") //for mocking
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")  // For UI tests
+    androidTestImplementation ("androidx.test.ext:junit:1.1.5")  // For testing with JUnit in Android
+    androidTestImplementation ("androidx.test:rules:1.5.0")  // For testing rules (e.g., activity lifecycle)
+
 
 }
 

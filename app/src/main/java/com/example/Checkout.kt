@@ -57,12 +57,12 @@ class Checkout : AppCompatActivity() {
         calculateTotalPrice(cartItems)
 
         // Checkout button
-        findViewById<Button>(R.id.checkout).setOnClickListener {
-            checkout() // Handle checkout logic
+        buttonNavigate.setOnClickListener {
+            checkout() // Show confirmation before proceeding
         }
 
         // Back to Menu button
-        findViewById<Button>(R.id.checkout).setOnClickListener {
+        findViewById<Button>(R.id.payment).setOnClickListener {
             val intent = Intent(this, Menu::class.java)
             startActivity(intent)
             finish() // Optional: Close the Checkout activity
@@ -84,9 +84,7 @@ class Checkout : AppCompatActivity() {
 
 
     private fun checkout() {
-        // Implement your checkout logic here
-        Toast.makeText(this, "Proceed Checkout: R${String.format("%.2f", totalPrice)}", Toast.LENGTH_SHORT).show()
-        ShowInfo()
+        ShowInfo() // Show confirmation dialog before proceeding
     }
 
     data class FoodItem(
