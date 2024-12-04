@@ -1,74 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7"
-    tools:context=".Settings">
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Copyright"
-        android:textColor="#151515"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout"
-        app:layout_constraintVertical_bias="0.929" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/logout"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Logout"
-        android:textColor="#FF5722"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/history" />
+        <!-- User Profile Section -->
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="168dp"
-        android:layout_height="151dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="User Profile"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Edit Name"
 
-    <Button
-        android:id="@+id/signres"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Sign In/ Register"
-        android:textColor="#FF5722"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/history"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="Order History"
-        android:textColor="#FF5722"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signres" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Edit Email"
+            android:inputType="textEmailAddress"
+
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Edit Password"
+            android:inputType="textPassword"
+
+            android:layout_marginBottom="24dp" />
+
+        <!-- App Preferences -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App Preferences"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <Switch
+            android:id="@+id/notificationsSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Notifications"
+            android:layout_marginBottom="16dp" />
+
+        <Switch
+            android:id="@+id/darkModeSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Dark Mode"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Help & Support -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help and Support"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/faqButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FAQ"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/contactSupportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Support"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:backgroundTint="@color/thirdColor"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>
