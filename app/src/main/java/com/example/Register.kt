@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -38,6 +39,13 @@ class Register : AppCompatActivity() {
             val email = emailInput.text.toString().trim()
             val password = passwordInput.text.toString().trim()
             val confirmPassword = confirmPasswordInput.text.toString().trim()
+            val cbTerms = findViewById<CheckBox>(R.id.cbTerms)
+
+            if (!cbTerms.isChecked) {
+                Toast.makeText(this, "Please accept Terms and Conditions", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
 
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
